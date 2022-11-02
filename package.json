@@ -2,9 +2,11 @@
   "name": "rate-limiter-node-typescript",
   "version": "1.0.0",
   "description": "A project that implements various rate limiting algorithms.",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "",
+    "dist": "rm -rf dist && tsc",
+    "start": "yarn dist && node ."
   },
   "repository": {
     "type": "git",
@@ -22,5 +24,12 @@
   "bugs": {
     "url": "https://github.com/AmanMulani/rate-limiter-node-typescript/issues"
   },
-  "homepage": "https://github.com/AmanMulani/rate-limiter-node-typescript#readme"
+  "homepage": "https://github.com/AmanMulani/rate-limiter-node-typescript#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "@types/jest": "^29.2.1",
+    "@types/node": "^18.11.9",
+    "jest": "^29.2.2",
+    "ts-jest": "^29.0.3"
+  }
 }
