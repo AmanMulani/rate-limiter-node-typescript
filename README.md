@@ -1,10 +1,11 @@
+### Introduction
 In this project, we will explore the following three 
 approaches for rate-limiting:
 1. Token Bucket
 2. Fixed Window
 3. Sliding Window
 
-What is rate limiting?
+### Rate Limiting
 In simple words, rate-limiting is a simple way of handling how many 
 requests you want your server to serve in a given time frame. For 
 example, if your server has a capacity of handling a load of 50 
