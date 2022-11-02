@@ -1,0 +1,26 @@
+{
+  "name": "rate-limiter-node-typescript",
+  "version": "1.0.0",
+  "description": "A project that implements various rate limiting algorithms.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AmanMulani/rate-limiter-node-typescript.git"
+  },
+  "keywords": [
+    "rate-limiter",
+    "typscript",
+    "sliding-window",
+    "token-bucket",
+    "fixed-window"
+  ],
+  "author": "Aman Mulani",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AmanMulani/rate-limiter-node-typescript/issues"
+  },
+  "homepage": "https://github.com/AmanMulani/rate-limiter-node-typescript#readme"
+}
