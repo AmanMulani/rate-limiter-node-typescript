@@ -9,7 +9,6 @@ class TokenBucketRateLimiter {
         this.rateLimitValue = config.rateValue;
         this.instance = this.rateLimitValue;
         setInterval(() => {
-            // console.log('Rate Limiter: ', this.instance);
             this.instance = this.rateLimitValue;
         }, this.rateLimitTime);
     }
@@ -20,7 +19,6 @@ class TokenBucketRateLimiter {
         if (this.instance >= 0) {
             this.instance = this.instance - 1;
         }
-        console.log(this.instance);
         return this.instance;
     }
     static getInstance() {

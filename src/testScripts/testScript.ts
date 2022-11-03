@@ -5,9 +5,9 @@ const testScript = async () => {
             'http://localhost:3000'
         )
         if(res.status == 429) {
-            console.log('Rate Limited Request Number: ', i);
+            console.log(i, 'Rate Limited');
         } else {
-            console.log('Request Number: ', i, 'Success!');
+            console.log(i, 'Success!');
         }
     }
 }
