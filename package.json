@@ -4,7 +4,7 @@
   "description": "A project that implements various rate limiting algorithms.",
   "main": "dist/index.js",
   "scripts": {
-    "test": "",
+    "test": "yarn dist && node dist/testScripts/testScript.js",
     "dist": "rm -rf dist && tsc",
     "start": "yarn dist && nodemon ."
   },
@@ -14,7 +14,7 @@
   },
   "keywords": [
     "rate-limiter",
-    "typscript",
+    "typescript",
     "sliding-window",
     "token-bucket",
     "fixed-window"

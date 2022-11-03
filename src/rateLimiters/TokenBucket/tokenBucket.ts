@@ -17,7 +17,7 @@ export class TokenBucketRateLimiter {
 
 
         setInterval(() => {
-            console.log('Rate Limiter: ', this.instance);
+            // console.log('Rate Limiter: ', this.instance);
             this.instance = this.rateLimitValue;
         }, this.rateLimitTime);
     }

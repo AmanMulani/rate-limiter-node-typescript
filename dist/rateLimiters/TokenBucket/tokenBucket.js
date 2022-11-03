@@ -9,7 +9,7 @@ class TokenBucketRateLimiter {
         this.rateLimitValue = config.rateValue;
         this.instance = this.rateLimitValue;
         setInterval(() => {
-            console.log('Rate Limiter: ', this.instance);
+            // console.log('Rate Limiter: ', this.instance);
             this.instance = this.rateLimitValue;
         }, this.rateLimitTime);
     }
@@ -23,11 +23,16 @@ class TokenBucketRateLimiter {
         console.log(this.instance);
         return this.instance;
     }
-    static getRateLimiter(config) {
+    static getInstance() {
+        if (rateLimiter === undefined || rateLimiter === null) {
+            throw new Error('Rate Limiter not initialized');
+        }
+        return rateLimiter;
+    }
+    static initializeRateLimiter(config) {
         if (rateLimiter === undefined || rateLimiter === null) {
             rateLimiter = new TokenBucketRateLimiter(config);
         }
-        return rateLimiter;
     }
 }
 exports.TokenBucketRateLimiter = TokenBucketRateLimiter;

@@ -4,26 +4,17 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
+const rateLimiter_1 = require("./rateLimiters/TokenBucket/rateLimiter");
 const tokenBucket_1 = require("./rateLimiters/TokenBucket/tokenBucket");
-const rateLimiter = tokenBucket_1.TokenBucketRateLimiter.getRateLimiter({
-    rateTime: 10000,
-    rateValue: 5
+tokenBucket_1.TokenBucketRateLimiter.initializeRateLimiter({
+    rateTime: 1000,
+    rateValue: 10
 });
 const app = (0, express_1.default)();
 const port = 3000;
 //Rate Limiter Middleware
-app.use((_, res, next) => {
-    if (rateLimiter.decreaseLimitVal() <= 0) {
-        console.log('Here');
-        res.status(429).json({
-            'body': "Rate Limited!!!!"
-        });
-    }
-    else {
-        next();
-    }
-});
-app.get('/', (req, res) => {
+app.use(rateLimiter_1.rateLimiter);
+app.get('/', (_, res) => {
     res.send('Server is up and running!');
 });
 app.listen(port, () => {

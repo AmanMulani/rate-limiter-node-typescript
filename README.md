@@ -5,6 +5,12 @@ approaches for rate-limiting:
 2. Fixed Window
 3. Sliding Window
 
+
+### Instructions to Run
+To install all the dependencies: yarn
+To start the server using: yarn start
+After that to test the working of rate-limiter use: yarn test
+
 ### Rate Limiting
 In simple words, rate-limiting is a simple way of handling how many 
 requests you want your server to serve in a given time frame. For 

@@ -4,8 +4,8 @@ import { TokenBucketRateLimiter } from './rateLimiters/TokenBucket/tokenBucket';
 
 
 TokenBucketRateLimiter.initializeRateLimiter({
-    rateTime: 10000,
-    rateValue: 5
+    rateTime: 1000,
+    rateValue: 10
 });
 
 
