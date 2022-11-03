@@ -6,10 +6,19 @@ approaches for rate-limiting:
 3. Sliding Window
 
 
-### Instructions to Run
-To install all the dependencies: yarn
-To start the server using: yarn start
-After that to test the working of rate-limiter use: yarn test
+### Local Setup
+To install all the dependencies: 
+```
+yarn
+```
+To start the server run the following command: 
+```
+yarn start
+```
+Once the server is up and running, to check the rate-limiter run this command in another terminal window: 
+```
+yarn test
+```
 
 ### Rate Limiting
 In simple words, rate-limiting is a simple way of handling how many 
