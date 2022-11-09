@@ -11,7 +11,7 @@ TokenBucketRateLimiter.initializeRateLimiter({
 });
 
 
-FixedWindowRateLimiter.initializeRateLimiter(10, 10);
+FixedWindowRateLimiter.initializeRateLimiter(10, 1000);
 
 
 
