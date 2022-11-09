@@ -1,5 +1,7 @@
 import express from 'express';
-import { rateLimiter } from './rateLimiters/TokenBucket/rateLimiter';
+import { FixedWindowRateLimiter } from './rateLimiters/FixedWindow/fixedWindow';
+import { rateLimiter as fixedWindowRateLimiter} from './rateLimiters/FixedWindow/rateLimiter';
+import { rateLimiter as tokenBucketRateLimiter } from './rateLimiters/TokenBucket/rateLimiter';
 import { TokenBucketRateLimiter } from './rateLimiters/TokenBucket/tokenBucket';
 
 
@@ -9,12 +11,15 @@ TokenBucketRateLimiter.initializeRateLimiter({
 });
 
 
+FixedWindowRateLimiter.initializeRateLimiter(10, 10);
+
+
 
 const app = express();
 const port = 3000;
 
 //Rate Limiter Middleware
-app.use(rateLimiter)
+app.use(fixedWindowRateLimiter);
 
 app.get('/', (_, res) => {
     res.send('Server is up and running!');
