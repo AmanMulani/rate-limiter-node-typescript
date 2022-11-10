@@ -1,6 +1,6 @@
 const testScript = async () => {
     for(let i = 0; i<100; i++) {
-        await wait(150);
+        await wait(50);
         const res = await fetch(
             'http://localhost:3000'
         )

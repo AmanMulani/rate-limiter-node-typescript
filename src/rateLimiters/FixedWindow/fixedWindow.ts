@@ -1,5 +1,9 @@
 let _rateLimiter: FixedWindowRateLimiter;
 
+export type FixedWindowRateLimiterConfig = {
+    rateValue: number, //number of requests allowed per unit time
+    rateTime: number   //unit of time in milliseconds
+}
 export class FixedWindowRateLimiter {
 
     public rateLimitValue: number;
@@ -9,34 +13,23 @@ export class FixedWindowRateLimiter {
     private currLimit: number;
 
 
-    private constructor(rv: number, rt: number) {
-        this.rateLimitTime = rt;
-        this.rateLimitValue = rv;
+    private constructor(config: FixedWindowRateLimiterConfig) {
+        this.rateLimitTime = config.rateTime;
+        this.rateLimitValue = config.rateValue;
         this.initialTimeStamp = new Date().getTime();
         this.prevTimeStamp = this.initialTimeStamp;
-
-        console.log('**********************************************');
-        console.log(this.prevTimeStamp);
-        
-        
-        this.currLimit = rv;
+        this.currLimit = config.rateValue;
     }
 
 
     public decreaseLimitVal(): number {
         const currTimeStamp = new Date().getTime();
-        // console.log(new Date().getTime());
-        // console.log(this.initialTimeStamp);
-        
-        
         if(currTimeStamp < this.prevTimeStamp + this.rateLimitTime) {
-            // console.log('I am here');
             if(this.currLimit >= 0) {
                 console.log(this.currLimit);
                 this.currLimit--;
             }
         } else {
-            console.log('=====================================');
             const currMultiplier = Math.floor((currTimeStamp - this.initialTimeStamp))/this.rateLimitTime;
             this.prevTimeStamp = this.initialTimeStamp + currMultiplier * this.rateLimitTime;
             console.log(this.prevTimeStamp);
@@ -54,13 +47,11 @@ export class FixedWindowRateLimiter {
     }
 
 
-    public static initializeRateLimiter(rv: number, rt: number): FixedWindowRateLimiter {
+    public static initializeRateLimiter(config: FixedWindowRateLimiterConfig): FixedWindowRateLimiter {
         if(_rateLimiter === null || _rateLimiter === undefined) {
-            _rateLimiter =  new FixedWindowRateLimiter(rv, rt);
+            _rateLimiter =  new FixedWindowRateLimiter(config);
         }
         return _rateLimiter;
     }
-
-
 
 }
