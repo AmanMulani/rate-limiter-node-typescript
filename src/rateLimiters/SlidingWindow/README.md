@@ -4,3 +4,7 @@ So if there are X requests allowed per T unit time, we check the timestamp of th
 1. if the previous_request_timestamp + T > currentRequest, we check how many requests have been made in the time period: previous_request_timestamp + T. If this number of requests is less than X, we allow the request, else we rate limit the request.
 
 2. If previous_request_timestamp + T < currentRequest, we accept this request and set the previous_request_timestamp = currentRequest
+
+
+## Advantages
+A major advantage is that it overcomes the shortfall of fixed window against bursts of requests at the edge of the time frame.
